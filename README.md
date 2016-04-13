@@ -31,17 +31,17 @@
         li.inspectelement a { background-position: -55px -250px; width: 144px; height: 32px; }
         li.inspectelement a span { background-position: 0 -250px; }
     </style>
-<body>
-<div id="container">
-    <h1>CSS3旋转图标</h1>
-    <ul id="social" class="group">
-        <li class="twitter"><a href="/"><span></span>twitter</a></li>
-        <li class="dribbble"><a href="/"><span></span>dribbble</a></li>
-        <li class="lastfm"><a href="/"><span></span>last.fm</a></li>
-        <li class="spotify"><a href="/"><span></span>Spotify</a></li>
-        <li class="ember"><a href="/"><span></span>ember</a></li>
-        <li class="inspectelement"><a href="/"><span></span>Inspect Element</a></li>
-    </ul>
-</div>
-</body>
-</html>
+    <body>
+    <div id="container">
+        <h1>CSS3旋转图标</h1>
+        <ul id="social" class="group">
+            <li class="twitter"><a href="/"><span></span>twitter</a></li>
+            <li class="dribbble"><a href="/"><span></span>dribbble</a></li>
+            <li class="lastfm"><a href="/"><span></span>last.fm</a></li>
+            <li class="spotify"><a href="/"><span></span>Spotify</a></li>
+            <li class="ember"><a href="/"><span></span>ember</a></li>
+            <li class="inspectelement"><a href="/"><span></span>Inspect Element</a></li>
+        </ul>
+    </div>
+    </body>
+    </html>
