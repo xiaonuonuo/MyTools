@@ -1,7 +1,8 @@
 # 纯CSS3实现的可旋转的社交网站分享按钮效果
 
-<!DOCTYPE html>
-<head>
+    <!DOCTYPE html>
+    <html>
+    <head>
     <title>纯CSS3实现的可旋转的社交网站分享按钮效果</title>
     <style>
         #container { width: 960px; margin: 0 auto; }
