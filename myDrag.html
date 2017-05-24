@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="renderer" content="webkit" />
+    <meta name="format-detection" content="telephone=no, email=no" />
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width" />
+    <meta charset="UTF-8">
+    <title>touch_test</title>
+    <style>
+        p {height: 50px;line-height: 50px;text-align: center;background: #f0ad4e;color: #fff;}
+    </style>
+</head>
+<body>
+    <div style="height:5500px;">
+        <p id="test">touch_test</p>
+         <div id="box" style="width:100px;height:100px;background-color:red;position:absolute;z-index:10"></div>
+    </div>
+    <script>
+        var box = document.getElementById('box');
+        box.addEventListener('touchstart',function(event){
+            event.preventDefault();
+            if(event.targetTouches.length == 1){
+                var touch = event.targetTouches[0],
+                x1 = touch.clientX,
+                y1 = touch.clientY,
+                dragLeft = event.target.offsetLeft,
+                dragTop = event.target.offsetTop,
+                disX = x1 - dragLeft,
+                disY = y1 - dragTop;
+                document.addEventListener('touchmove',function(event){
+                    // event.preventDefault();
+                    var touch = event.targetTouches[0],
+                        iL = touch.clientX - disX,
+                        iT = touch.clientY - disY;
+                    var maxL = document.documentElement.clientWidth - event.target.offsetWidth,
+                        maxT = document.documentElement.clientHeight - event.target.offsetHeight;
+                    iL <= 0 && (iL = 0);
+                    iT <= 0 && (iT = 0);
+                    iL >= maxL && (iL = maxL);
+                    iT >= maxT && (iT = maxT);
+
+                    box.style.left = iL + 'px';
+                    box.style.top = iT + 'px';
+                    box.style.background = "green";
+                });
+            }
+        })
+    </script>
+
+</body>
+</html>
