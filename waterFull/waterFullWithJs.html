@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title></title>
+    <style type="text/css">
+        *{padding: 0;margin:0;}
+        #main{
+            position: relative;
+        }
+        .pin{
+            padding: 15px 0 0 15px;
+            float:left;
+            transition: .7s ease-out .1s;
+        }
+        .box{
+            padding: 10px;
+            border:1px solid #ccc;
+            box-shadow: 0 0 6px #ccc;
+            border-radius: 5px;
+        }
+        .box img{
+            width:162px;
+            height:auto;
+        }
+    </style>
+    <script type="text/javascript">
+        window.onload = function(){
+            waterFall("main","pin");
+            var dataInt={'data':[{'src':'1.jpg'},{'src':'2.jpg'},{'src':'3.jpg'},{'src':'4.jpg'}]};
+            window.onscroll = function(){
+                for(var i=0;i<dataInt.data.length;i++){
+                    if(checkScroll("main","pin")){
+                        var oparent = document.getElementById("main");
+                        var opin = document.createElement("div");
+                        opin.className = "pin";
+                        oparent.appendChild(opin);
+                        var obox = document.createElement("div");
+                        obox.className = "box";
+                        opin.appendChild(obox);
+                        var opic = document.createElement("img");
+                        obox.appendChild(opic);
+                        opic.src = "images/" + dataInt.data[i].src;
+                    }
+                }
+                waterFall("main","pin");
+            };
+            window.onresize = function(){
+                waterFall("main","pin");
+            }
+        };
+        function waterFall(parent,opin){
+            var oparent = document.getElementById(parent);
+            var opinArr = getClass(parent,opin);
+            var oBoxW = opinArr[6].offsetWidth;
+            //console.log(document.documentElement.clientWidth);
+            var oBoxN = Math.floor(document.documentElement.clientWidth/oBoxW);
+            //console.log(oBoxN)
+            oparent.style.cssText = "width:" +oBoxN*oBoxW +"px;margin:0 auto;";
+            var minArr = [];
+            for(var i=0;i<opinArr.length;i++){
+                if(i<oBoxN){
+                    minArr.push(opinArr[i].offsetHeight);
+                    opinArr[i].style.position = "absolute";
+                    opinArr[i].style.top = "0px";
+                    opinArr[i].style.left = oBoxW*i + "px";
+                    //console.log(minArr);
+                }else{
+                    var minH = Math.min.apply(null,minArr);
+                    var minHIndex = getMin(minArr,minH);
+                    opinArr[i].style.position = "absolute";
+                    opinArr[i].style.top = minH +"px";
+                    opinArr[i].style.left = opinArr[minHIndex].offsetLeft +"px";
+                    minArr[minHIndex]+=opinArr[i].offsetHeight;
+                }
+            }
+        }
+        function getClass(parent,obj){
+            var oparent = document.getElementById(parent);
+            var oPins = oparent.getElementsByTagName("*");
+            var opinArr = [];
+            //console.log(oPins.length)
+            for(var i=0;i<oPins.length;i++){
+                //console.log(oPins[i])
+                if(oPins[i].className == obj){
+                    opinArr.push(oPins[i]);
+                }
+            }
+            return opinArr;
+        }
+        function getMin(key,val){
+            for(var i in key){
+                if(key[i] == val){
+                    return i
+                }
+            }
+        }
+        function checkScroll(parent,clsName){
+            var classArr = getClass(parent,clsName);
+            var lastH = Math.floor(classArr[classArr.length-1].offsetHeight/2 + classArr[classArr.length-1].offsetTop);
+            var clientH = document.documentElement.clientHeight || document.body.clientHeight;
+            var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+            //console.log(scrollTop);
+            if(lastH<clientH+scrollTop){
+                return true;
+            }
+        }
+    </script>
+</head>
+<body>
+<div id="main">
+    <div class="pin">
+        <div class="box">
+            <img src="./images/1.jpg"/>
+        </div>
+    </div>
+    <div class="pin">
+        <div class="box">
+            <img src="./images/2.jpg"/>
+        </div>
+    </div>
+    <div class="pin">
+        <div class="box">
+            <img src="./images/3.jpg"/>
+        </div>
+    </div>
+    <div class="pin">
+        <div class="box">
+            <img src="./images/4.jpg"/>
+        </div>
+    </div>
+    <div class="pin">
+        <div class="box">
+            <img src="./images/5.jpg"/>
+        </div>
+    </div>
+    <div class="pin">
+        <div class="box">
+            <img src="./images/6.jpg"/>
+        </div>
+    </div>
+    <div class="pin">
+        <div class="box">
+            <img src="./images/7.jpg"/>
+        </div>
+    </div>
+    <div class="pin">
+        <div class="box">
+            <img src="./images/8.jpg"/>
+        </div>
+    </div>
+    <div class="pin">
+        <div class="box">
+            <img src="./images/9.jpg"/>
+        </div>
+    </div>
+    <div class="pin">
+        <div class="box">
+            <img src="./images/10.jpg"/>
+        </div>
+    </div>
+    <div class="pin">
+        <div class="box">
+            <img src="./images/11.jpg"/>
+        </div>
+    </div>
+    <div class="pin">
+        <div class="box">
+            <img src="./images/12.jpg"/>
+        </div>
+    </div>
+    <div class="pin">
+        <div class="box">
+            <img src="./images/13.jpg"/>
+        </div>
+    </div>
+    <div class="pin">
+        <div class="box">
+            <img src="./images/14.jpg"/>
+        </div>
+    </div>
+    <div class="pin">
+        <div class="box">
+            <img src="./images/15.jpg"/>
+        </div>
+    </div>
+    <div class="pin">
+        <div class="box">
+            <img src="./images/16.jpg"/>
+        </div>
+    </div>
+    <div class="pin">
+        <div class="box">
+            <img src="./images/17.jpg"/>
+        </div>
+    </div>
+    <div class="pin">
+        <div class="box">
+            <img src="./images/18.jpg"/>
+        </div>
+    </div>
+    <div class="pin">
+        <div class="box">
+            <img src="./images/19.jpg"/>
+        </div>
+    </div>
+    <div class="pin">
+        <div class="box">
+            <img src="./images/20.jpg"/>
+        </div>
+    </div>
+    <div class="pin">
+        <div class="box">
+            <img src="./images/21.jpg"/>
+        </div>
+    </div>
+</div>
+</body>
+</html>

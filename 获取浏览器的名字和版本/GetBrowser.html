@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head></head>
+<body>
+<script>
+    window.onload = function(){
+        var agent = navigator.userAgent.toLowerCase();
+        var regStr_ie = /(mise)[\d.]+/g;
+        var regStr_chrome = /(chrome)\/[\d.]+/g;
+        console.log(agent.indexOf('chrome'));
+        if(agent.indexOf('chrome')>0){
+            var ch = agent.match(regStr_chrome);
+            ch = ch.toString();
+            console.log(ch.match(/[\d.]+/g));
+        }
+    }
+</script>
+</body>
+</html>
