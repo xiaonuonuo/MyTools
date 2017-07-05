@@ -441,132 +441,158 @@ class Tools {
      * @return {Object}
      */
     merge(...args) {
-    return Object.assign(...args)
-}
-
-/**
- * 拷贝对象并返回一个新的对象
- * @param  {Object} obj
- * @return {Object}
- */
-clone(obj) {
-    if (typeof obj !== 'object' || !obj) {
-        return obj
+        return Object.assign(...args)
     }
-    let copy = {}
-    for (let attr in obj) {
-        if (obj.hasOwnProperty(attr)) {
-            copy[attr] = obj[attr]
+
+    /**
+     * 拷贝对象并返回一个新的对象
+     * @param  {Object} obj
+     * @return {Object}
+     */
+    clone(obj) {
+        if (typeof obj !== 'object' || !obj) {
+            return obj
         }
-    }
-    return copy
-}
-
-/**
- * 删除对象上的指定属性并返回一个新的对象
- * @param  {Object} obj
- * @param  {Array} keys
- * @return {[type]}
- */
-omit(obj, keys) {
-    let o = this.clone(obj)
-    keys.forEach(key => {
-        delete o[key]
-    })
-    return o
-}
-
-/**
- * 返回一个新数组，数组中的元素为指定属性的值
- * @param  {Array} arr
- * @param  {String} key
- * @return {Array}
- */
-pluck(arr, key) {
-    if (typeof arr !== 'object' || arr.length === 0) {
-        return []
-    }
-    if (!key) {
-        return arr
-    }
-    return arr.map(a => a[key])
-}
-
-/**
- * 返回序列化的值
- * @param  {String} value
- * @return {String}
- */
-serializeValue(value) {
-    if (this.isObject(value)) return this.isDate(value) ? value.toISOString() : this.toJson(value)
-    return value
-}
-
-/**
- * 编码URI
- * @param  {String} value
- * @param  {String} pctEncodeSpaces
- * @return {String}
- */
-encodeUriQuery(value, pctEncodeSpaces) {
-    return encodeURIComponent(value)
-        .replace(/%40/gi, '@')
-        .replace(/%3A/gi, ':')
-        .replace(/%24/g, '$')
-        .replace(/%2C/gi, ',')
-        .replace(/%3B/gi, ';')
-        .replace(/%20/g, (pctEncodeSpaces ? '%20' : '+'))
-}
-
-/**
- * 对象序列化
- * @param  {Object} obj
- * @return {String}
- */
-paramSerializer(obj) {
-    if (!obj) return ''
-    let that = this
-    let parts = []
-    for (let key in obj) {
-        const value = obj[key]
-        if (value === null || that.isUndefined(value)) return
-        if (that.isArray(value)) {
-            value.forEach(function (v) {
-                parts.push(that.encodeUriQuery(key) + '=' + that.encodeUriQuery(that.serializeValue(v)))
-            })
-        } else {
-            parts.push(that.encodeUriQuery(key) + '=' + that.encodeUriQuery(that.serializeValue(value)))
+        let copy = {}
+        for (let attr in obj) {
+            if (obj.hasOwnProperty(attr)) {
+                copy[attr] = obj[attr]
+            }
         }
+        return copy
     }
-    return parts.join('&')
-}
 
-/**
- * 拼接URL
- * @param  {String} obj
- * @param  {Object} obj
- * @return {String}
- */
-buildUrl(url, obj) {
-    const serializedParams = this.paramSerializer(obj)
-    if (serializedParams.length > 0) {
-        url += ((url.indexOf('?') == -1) ? '?' : '&') + serializedParams
+    /**
+     * 删除对象上的指定属性并返回一个新的对象
+     * @param  {Object} obj
+     * @param  {Array} keys
+     * @return {[type]}
+     */
+    omit(obj, keys) {
+        let o = this.clone(obj)
+        keys.forEach(key => {
+            delete o[key]
+        })
+        return o
     }
-    return url
-}
 
-/**
- * 获取对象的个数
- */
-countProperties(obj) {
-    var count = 0;
-    for (var property in obj) {
-        if (Object.prototype.hasOwnProperty.call(obj, property)) {
-            count++;
+    /**
+     * 返回一个新数组，数组中的元素为指定属性的值
+     * @param  {Array} arr
+     * @param  {String} key
+     * @return {Array}
+     */
+    pluck(arr, key) {
+        if (typeof arr !== 'object' || arr.length === 0) {
+            return []
         }
+        if (!key) {
+            return arr
+        }
+        return arr.map(a => a[key])
     }
-    return count;
-}
+
+    /**
+     * 返回序列化的值
+     * @param  {String} value
+     * @return {String}
+     */
+    serializeValue(value) {
+        if (this.isObject(value)) return this.isDate(value) ? value.toISOString() : this.toJson(value)
+        return value
+    }
+
+    /**
+     * 编码URI
+     * @param  {String} value
+     * @param  {String} pctEncodeSpaces
+     * @return {String}
+     */
+    encodeUriQuery(value, pctEncodeSpaces) {
+        return encodeURIComponent(value)
+            .replace(/%40/gi, '@')
+            .replace(/%3A/gi, ':')
+            .replace(/%24/g, '$')
+            .replace(/%2C/gi, ',')
+            .replace(/%3B/gi, ';')
+            .replace(/%20/g, (pctEncodeSpaces ? '%20' : '+'))
+    }
+
+    /**
+     * 对象序列化
+     * @param  {Object} obj
+     * @return {String}
+     */
+    paramSerializer(obj) {
+        if (!obj) return ''
+        let that = this
+        let parts = []
+        for (let key in obj) {
+            const value = obj[key]
+            if (value === null || that.isUndefined(value)) return
+            if (that.isArray(value)) {
+                value.forEach(function (v) {
+                    parts.push(that.encodeUriQuery(key) + '=' + that.encodeUriQuery(that.serializeValue(v)))
+                })
+            } else {
+                parts.push(that.encodeUriQuery(key) + '=' + that.encodeUriQuery(that.serializeValue(value)))
+            }
+        }
+        return parts.join('&')
+    }
+
+    /**
+     * 拼接URL
+     * @param  {String} obj
+     * @param  {Object} obj
+     * @return {String}
+     */
+    buildUrl(url, obj) {
+        const serializedParams = this.paramSerializer(obj)
+        if (serializedParams.length > 0) {
+            url += ((url.indexOf('?') == -1) ? '?' : '&') + serializedParams
+        }
+        return url
+    }
+
+    /**
+     * 获取对象的个数
+     */
+    countProperties(obj) {
+        var count = 0;
+        for (var property in obj) {
+            if (Object.prototype.hasOwnProperty.call(obj, property)) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    /**
+     * 将Object的属性值输出成Array
+     */
+    objValueToArray(obj) {
+        var arr = [];
+        var i = 0;
+        for (var item in obj) {
+            arr[i] = obj[item];
+            i++;
+        }
+        return arr;
+    }
+
+    /**
+     * 将Object的属性输出成Array
+     */
+    objPropertyToArray(obj) {
+        var arr = [];
+        var i = 0;
+        for (var item in object) {
+            arr[i] = item;
+            i++;
+        }
+        return arr;
+    }
 }
 
 export default Tools
