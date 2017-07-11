@@ -21,7 +21,7 @@ btnFront.addEventListener( 'click', function( event ) {
   directions.sort( function( a, b ) {
     return distance( mx, my, a.x, a.y ) - distance( mx, my, b.x, b.y );
   } );
-  
+
   btn.setAttribute( 'data-direction', directions.shift().id );
   btn.classList.add( 'is-open' );
 
