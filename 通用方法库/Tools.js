@@ -583,6 +583,8 @@ class Tools {
 
     /**
      * 将Object的属性输出成Array
+     * @param  {object} obj
+     * @return {Array}
      */
     objPropertyToArray(obj) {
         var arr = [];
@@ -592,6 +594,24 @@ class Tools {
             i++;
         }
         return arr;
+    }
+
+    /**
+     * 将类数组转成数组的通用函数
+     * @param  {Array}
+     * @return  {Array}
+     */
+    toArray(s){
+        try{
+            return Array.prototype.slice.call(s);
+        } catch(e){
+            var arr = [];
+            for(var i = 0,len = s.length; i < len; i++){
+                //arr.push(s[i]);
+                arr[i] = s[i];  //据说这样比push快
+            }
+            return arr;
+        }
     }
 }
 
