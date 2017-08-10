@@ -1,2 +1,7 @@
 # Created by .ignore support plugin (hsz.mobi)
 .idea
+.idea/MyTools.iml
+.idea/inspectionProfiles/
+.idea/modules.xml
+.idea/watcherTasks.xml
+.idea/workspace.xml
