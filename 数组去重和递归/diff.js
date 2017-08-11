@@ -19,3 +19,12 @@ function diff(arr,em){
     arr.length>0 && diff(arr,em)
     return em
 }
+
+//一种简便的方法
+for (var i = 0; i < b.length; i++) {
+    if(a.indexOf(b[i]) == -1){
+        a.push(b[i])
+    }
+}
+
+console.log(a)
