@@ -8,6 +8,7 @@ var c = diff(b,a)
 
 console.log(c)
 
+//递归方法
 function diff(arr,em){
     for (var i = 0; i < arr.length; i++) {
         if(i>0 && arr[0] == arr[i]){
@@ -19,3 +20,12 @@ function diff(arr,em){
     arr.length>0 && diff(arr,em)
     return em
 }
+
+//一种简便的方法 indexOf
+for (var i = 0; i < b.length; i++) {
+    if(a.indexOf(b[i]) == -1){
+        a.push(b[i])
+    }
+}
+
+console.log(a)

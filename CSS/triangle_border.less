@@ -1,0 +1,33 @@
+.message-footer__tooltip {
+    padding: 5px;
+    border: 1px solid #e9e9e9;
+    color: #afafaf;
+    position: absolute;
+    left: -170px;
+    top: 2px;
+
+&:before {
+     content: '';
+     width: 0;
+     height: 0;
+     border-width:8px 0 8px 8px;
+     border-style:dashed;
+     border-color:transparent transparent transparent #e9e9e9;
+     position: absolute;
+     top: 6px;
+     right: -9px;
+ }
+
+&:after {
+     content: '';
+     width: 0;
+     height: 0;
+     border-width:8px 0 8px 8px;
+     border-style:dashed;
+     border-color:transparent transparent transparent #fff;
+     position: absolute;
+     top: 6px;
+     right: -8px;
+ }
+
+}
