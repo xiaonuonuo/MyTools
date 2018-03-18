@@ -1,4 +1,4 @@
-# javascript防抖与节流
+# javascript防抖与节流
 
 ## 1.目的
 ---
@@ -81,7 +81,7 @@ function debouce(func,delay,immediate){
 }
 ```
 
-## 3.节流
+## 3.节流
 ---
 
 节流是另一种处理类似问题的解决方法。 **节流函数允许一个函数在规定的时间内只执行一次。**
