@@ -60,7 +60,7 @@ function debouce(func,delay,immediate){
     return function(){
         var context = this;
         var args = arguments;
-        if(timer) clearTimeout(time);
+        if(timer) clearTimeout(timer);
         if(immediate){
             //根据距离上次触发操作的时间是否到达delay来决定是否要现在执行函数
             var doNow = !timer;
