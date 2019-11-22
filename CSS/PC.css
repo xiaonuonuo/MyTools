@@ -1,0 +1,11 @@
+body,h1,h2,h3,h4,h5,h6,dl,dt,dd,ul,ol,li,th,td,p,form,input,button,textarea{margin:0;padding:0;word-break:break-all;word-wrap:break-word;}
+body,button,input,select,textarea{font:12px/1.5 -apple-system,BlinkMacSystemFont,Helvetica Neue,PingFang SC,Microsoft YaHei,Source Han Sans SC,Noto Sans CJK SC,WenQuanYi Micro Hei,sans-serif; color:#252a2d;font-weight:300;}
+table{border-collapse:collapse;border-spacing:0;}
+ul,ol{list-style: none;}
+li{list-style:none;}
+div,input,textarea{outline-style:none;}
+h1,h2,h3,h4,h5,h6,button,input,select,textarea{font-size:100%;}
+em,i{font-style:normal;font-weight:300;}
+img {border: 0;vertical-align: middle;}
+a {text-decoration:none;outline:0;color:#252a2d;}
+a:hover{text-decoration:none;color:#0093e8;}
